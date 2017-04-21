@@ -1,12 +1,11 @@
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
     app: [
-      './index.js',
-      './index.html',
-      './index.css'
+      './index.js'
     ]
   },
   output: {
@@ -29,5 +28,10 @@ module.exports = {
         loader: 'file-loader?name=[name].[ext]'
       }
     ]
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: 'assets' }
+    ])
+  ]
 }
